@@ -1,0 +1,2068 @@
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (22.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to DeviseCreateUsers (20161102053305)
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (26.3ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161102053305')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-11-02 05:33:14', '2016-11-02 05:33:14')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.1ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'users'
+[0m
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:34:47 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 22ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:34:47 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (42.3ms)
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:34:48 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:34:48 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 1664ms (Views: 1646.3ms | ActiveRecord: 1.5ms)
+
+
+Completed 200 OK in 901ms (Views: 898.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:35:58 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+MId2Xj6tA6YNlsZUynZckqM+TPWaFTXq3L9oLsYGcDP60f7E7YZ7d/6gJTvaq1zHOSAde4TTG223z7f66L0FA==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+MId2Xj6tA6YNlsZUynZckqM+TPWaFTXq3L9oLsYGcDP60f7E7YZ7d/6gJTvaq1zHOSAde4TTG223z7f66L0FA==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 330ms (Views: 53.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-02 05:36:04 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 70ms (Views: 66.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-11-02 05:36:15 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yewUbe91HfQ2WiylSGv5UYCc6hhtMwGWj4BfwjzhJuKfqFetre8kAzuxp4/szlUbbQRl1m1oixQKZ26hG2aY5A==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (9.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'foo@bar.com' LIMIT 1[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('foo@bar.com', '$2a$11$I3CLtx7yfN4ZH9Q4F5Mhrey93UYv4lNruOUClBSBr5dSImIvHOmi.', '2016-11-02 05:36:15', '2016-11-02 05:36:15')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.0ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2016-11-02 05:36:15', `last_sign_in_at` = '2016-11-02 05:36:15', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 296ms (ActiveRecord: 23.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:36:15 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 45ms (Views: 37.2ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 05:36:24 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"J33KdR0RjLFywQt8/bH4IL5M2hh3FSEmwITaTjQWMiIQVJBXdl0hUjUN0PFB8owh6CSjXk9uOZzdKRkxZKzf9g=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:36:24 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:36:24 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:39:43 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"osGQ9+nnC1+ZvwgD8ZpjojFVwePdwwDOqjhrHXYuHgFPPJBuMA9v4ZN+DXGCiQa6V6c2yuvqpB8gblDiJZR2wg==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 249ms (ActiveRecord: 6.8ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"osGQ9+nnC1+ZvwgD8ZpjojFVwePdwwDOqjhrHXYuHgFPPJBuMA9v4ZN+DXGCiQa6V6c2yuvqpB8gblDiJZR2wg==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (155.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (184.0ms)
+Completed 200 OK in 493ms (Views: 265.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:39:50 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1h73Zho0IS+nQCTe1bIypSJbH485ZAuv6404fYvifII74/f/w9xFka2BIaymoVe9RKnopg9Nr35h2wOC2FgUQQ==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 05:39:50', `sign_in_count` = 2, `updated_at` = '2016-11-02 05:39:50' WHERE `users`.`id` = 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 230ms (ActiveRecord: 6.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:39:50 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 59ms (Views: 52.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 05:39:58 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GPj6S/nQbTgx4gkJZXEqNgxQmU13724wjqQI+I+z9T6n5vH1WpB+Cb7OumI3o/trrhJSJEliCEHnSzhzIXl7Dg=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 11ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:39:58 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:39:58 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (3.0ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 79ms (Views: 75.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:40:47 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vEZ7GxOdNKmNgIPhddFAZFPh8K9mq2t0MMqYOXthH4Lvh+FaRjZ3IE74IJECQ269AyPZUOLeABSWbn1brc3kqw==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 05:40:47', `last_sign_in_at` = '2016-11-02 05:39:50', `sign_in_count` = 3, `updated_at` = '2016-11-02 05:40:47' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 304ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:40:47 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 133ms (Views: 123.9ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 05:41:05 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0KixDZVea7AMnXmzV/LYW8wCm1vh7hF0SUOoW0HrRgRlymghymcBJxLXDUhAXNsA4ITVdP2DSDffCpLsn36JNg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:41:05 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:41:05 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (10.3ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 125ms (Views: 120.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 05:46:31 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"78AhU7I3wHh0ToY4Mp9RjkNYOjVg5YAuGCEG2FeRHgcREI5Q1v3hjXO2bgO2QwxPf//7YpjbcfgtDluJVai5lA==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[33mUPDATE `users` SET `remember_created_at` = '2016-11-02 05:46:32', `updated_at` = '2016-11-02 05:46:32' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 4, `current_sign_in_at` = '2016-11-02 05:46:32', `last_sign_in_at` = '2016-11-02 05:40:47' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 339ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:46:32 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 454ms (Views: 447.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2016-11-02 05:46:37 +0000
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/edit.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/edit.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 75ms (Views: 71.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 05:46:40 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 55ms (Views: 48.3ms | ActiveRecord: 0.9ms)
+
+
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateBookmarks (20161102055554)
+  [1m[35m (46.2ms)[0m  [1m[35mCREATE TABLE `bookmarks` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` varchar(255), `title` varchar(255), `link` varchar(255), `note` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161102055554')[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW CREATE TABLE `bookmarks`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'bookmarks'[0m
+  [1m[35m (1.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'bookmarks'
+[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'users'
+[0m
+Started GET "/items" for ::1 at 2016-11-02 05:57:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+ActionController::RoutingError (No route matches [GET] "/items"):
+  
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:135:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:28:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `catch'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:36:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:26:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/sprockets-rails-3.2.0/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/executor.rb:12:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/static.rb:136:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/engine.rb:522:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/configuration.rb:225:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:578:in `handle_request'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:415:in `process_client'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:275:in `block in run'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered collection of vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [25 times] (32.6ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.9ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.2ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (235.3ms)
+Started GET "/bookmark" for ::1 at 2016-11-02 05:57:13 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/bookmark"):
+  
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:135:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:28:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `catch'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:36:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:26:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/sprockets-rails-3.2.0/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/executor.rb:12:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/static.rb:136:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/engine.rb:522:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/configuration.rb:225:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:578:in `handle_request'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:415:in `process_client'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:275:in `block in run'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered collection of vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [25 times] (10.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (156.4ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:57:20 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 05:57:20 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 689ms (Views: 667.4ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-11-02 05:57:33 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9sM96KKSE35qtnexYekygqCgoTCTRWiW8W8rIC2774+rLt25UwVGesmQfaiIqdfPAecj9/ItmiQNC5p82OIaAA==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 05:57:34', `last_sign_in_at` = '2016-11-02 05:46:32', `current_sign_in_ip` = '::1', `sign_in_count` = 5, `updated_at` = '2016-11-02 05:57:34' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks
+Completed 302 Found in 254ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:57:34 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 63ms (Views: 51.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 05:57:55 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (9.0ms)
+  Rendered bookmarks/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 71ms (Views: 47.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:58:04 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 54ms (Views: 45.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 05:58:11 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (8.0ms)
+  Rendered bookmarks/new.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 133ms (Views: 123.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:58:15 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 70ms (Views: 62.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 05:58:21 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (7.3ms)
+  Rendered bookmarks/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 72ms (Views: 65.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:58:25 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 68ms (Views: 61.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 05:59:59 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 536ms (Views: 491.3ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 06:02:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 513ms (Views: 473.5ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-02 06:02:13 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JvceYiIQQOrhJk0uuCULNpQ99Ygwjo26+lvmIaJW3VHiFblI+UZOfdO+BpCFGnXFTf3kBd1tJ9B3uVZ0Q5y1rA=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[33mUPDATE `users` SET `remember_created_at` = NULL, `updated_at` = '2016-11-02 06:02:13' WHERE `users`.`id` = 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 06:02:13 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 06:02:13 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 74ms (Views: 71.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-11-02 06:02:14 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E2X+puz1xd3uopbGWo552/EnANIuTm8ybxZkJTRsPCU2ZAj1t2QD4QxlOZBJ/OXkBqTxY1wF0QwbPJvm5Fhwiw==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 06:02:15', `last_sign_in_at` = '2016-11-02 05:57:34', `last_sign_in_ip` = '::1', `sign_in_count` = 6, `updated_at` = '2016-11-02 06:02:15' WHERE `users`.`id` = 1[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 271ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 06:02:15 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 48ms (Views: 42.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-02 06:02:25 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zYjAq7OKC08giA+6zBPPyr0wDvdL4s2MTck4F5GRaces7LSFfjEGO+odqRN9GcNphuaWMSe23KgdciPMvGssOg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 06:02:25 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 06:02:25 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 55ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 06:02:33 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 06:02:33 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (3.2ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 82ms (Views: 79.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-11-02 06:02:39 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ir/iclKylzrRt8u/+MspwFDhPfl4ztk/F4HLX+Qoe5SE0YeQL1DgrZhuznYzo6oTqskbnUBV0kbVTPummttzQw==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 06:02:39', `last_sign_in_at` = '2016-11-02 06:02:15', `sign_in_count` = 7, `updated_at` = '2016-11-02 06:02:39' WHERE `users`.`id` = 1[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks
+Completed 302 Found in 245ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 06:02:39 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 43ms (Views: 34.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 06:02:47 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 35ms (Views: 30.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 06:02:55 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (8.3ms)
+  Rendered bookmarks/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 125ms (Views: 66.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 06:20:39 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 514ms (Views: 468.7ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:20:41 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.9ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 88ms (Views: 79.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:20:43 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (41.6ms)
+  Rendered bookmarks/new.html.erb within layouts/application (46.4ms)
+Completed 200 OK in 126ms (Views: 104.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:23:17 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (44.8ms)
+  Rendered bookmarks/new.html.erb within layouts/application (49.8ms)
+Completed 200 OK in 569ms (Views: 518.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:23:20 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 48ms (Views: 42.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:23:21 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (6.3ms)
+  Rendered bookmarks/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 69ms (Views: 63.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:24:31 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 517ms (Views: 473.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:24:33 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.0ms)
+
+
+  
+SyntaxError (/Users/kondoh/ruby_test/sample/app/views/bookmarks/new.html.erb:3: syntax error, unexpected tIVAR, expecting ')'
+...mark: @bookmark.title @bookmark.link @bookmark.note );@outpu...
+...                               ^):
+  
+app/views/bookmarks/new.html.erb:3: syntax error, unexpected tIVAR, expecting ')'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.8ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.7ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (139.6ms)
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:29:09 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (49.1ms)
+  Rendered bookmarks/new.html.erb within layouts/application (54.3ms)
+Completed 200 OK in 569ms (Views: 479.0ms | ActiveRecord: 6.1ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateBookmarks (20161102065030)
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE `bookmarks` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `link` varchar(255), `note` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateBookmarks (20161102065030)
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE `bookmarks` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `link` varchar(255), `note` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161102065030')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `bookmarks`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'bookmarks'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'bookmarks'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'users'
+[0m
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:53:40 +0000
+Started GET "/bookmark" for 127.0.0.1 at 2016-11-02 06:53:40 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+ActionController::RoutingError (No route matches [GET] "/bookmark"):
+  
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:135:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:28:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `catch'
+vendor/bundle/ruby/2.2.0/gems/web-console-3.4.0/lib/web_console/middleware.rb:18:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:36:in `call_app'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `block in call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:26:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/tagged_logging.rb:70:in `tagged'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/rack/logger.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/sprockets-rails-3.2.0/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.2.0/gems/activesupport-5.0.0.1/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/executor.rb:12:in `call'
+vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/static.rb:136:in `call'
+vendor/bundle/ruby/2.2.0/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.2.0/gems/railties-5.0.0.1/lib/rails/engine.rb:522:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/configuration.rb:225:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:578:in `handle_request'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:415:in `process_client'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/server.rb:275:in `block in run'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `call'
+vendor/bundle/ruby/2.2.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [25 times] (10.2ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (22.3ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.3ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (217.0ms)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 533ms (Views: 479.5ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:53:43 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 37ms (Views: 32.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:53:46 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (30.2ms)
+  Rendered bookmarks/new.html.erb within layouts/application (34.6ms)
+Completed 200 OK in 95ms (Views: 73.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/bookmarks" for 127.0.0.1 at 2016-11-02 06:53:51 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4jaXKEMKvEwMidkxJPMviXjE/0AIAql6wjbTbNsCXREeorFiMv8e3jKX8qNVkS1BVT4gRAszi2UULE1kUAksbg==", "bookmark"=>{"title"=>"a", "link"=>"b", "note"=>"c"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 06:53:51', '2016-11-02 06:53:51')[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Field 'user_id' doesn't have a default value: INSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 06:53:51', '2016-11-02 06:53:51')):
+  
+app/controllers/bookmarks_controller.rb:30:in `block in create'
+app/controllers/bookmarks_controller.rb:29:in `create'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (21.3ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (129.7ms)
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:54:48 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (1.0ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 82ms (Views: 72.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:54:51 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (4.2ms)
+  Rendered bookmarks/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 84ms (Views: 73.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bookmarks" for 127.0.0.1 at 2016-11-02 06:54:57 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uwq7D7HvwWR6t98HMjY4DxpGylq9NnOgQY2Uty1A+j2vnp1FwBpj9kSp9JVDVDrHN7wVXr4HUb+Xlwq/pkuLQg==", "bookmark"=>{"title"=>"a", "link"=>"b", "note"=>"c"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 06:54:57', '2016-11-02 06:54:57')[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Field 'user_id' doesn't have a default value: INSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 06:54:57', '2016-11-02 06:54:57')):
+  
+app/controllers/bookmarks_controller.rb:30:in `block in create'
+app/controllers/bookmarks_controller.rb:29:in `create'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (15.1ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.1ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (148.2ms)
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:56:45 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 61ms (Views: 53.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 06:56:47 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (6.4ms)
+  Rendered bookmarks/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 68ms (Views: 60.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bookmarks" for 127.0.0.1 at 2016-11-02 06:56:52 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+13HY1r3OaM+qZBEmYUchgRCjxorZUdaO5RvwxsbIhwHyeEpKwKbMQC3u9bo5x5OKbhQHihUZUXtjvHLkBBTYw==", "bookmark"=>{"title"=>"a", "link"=>"b", "note"=>"c"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 06:56:52', '2016-11-02 06:56:52')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks/1
+Completed 302 Found in 8ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/bookmarks/1" for 127.0.0.1 at 2016-11-02 06:56:52 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`id` = 1 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 59ms (Views: 34.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:57:05 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 67ms (Views: 59.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/bookmarks/1" for 127.0.0.1 at 2016-11-02 06:57:09 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`id` = 1 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 68ms (Views: 58.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:57:11 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 52ms (Views: 44.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks/1/edit" for 127.0.0.1 at 2016-11-02 06:57:13 +0000
+Processing by BookmarksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`id` = 1 LIMIT 1[0m
+  Rendering bookmarks/edit.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (6.5ms)
+  Rendered bookmarks/edit.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 70ms (Views: 62.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 06:57:17 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 59ms (Views: 43.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 07:02:18 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (16.3ms)
+  Rendered bookmarks/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 176ms (Views: 126.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 07:02:20 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 71ms (Views: 60.2ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/bookmarks/1" for 127.0.0.1 at 2016-11-02 07:02:25 +0000
+Processing by BookmarksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"np/fVCGLnWve2Q9Tm7ilSmES/U/TcC1U9vB4F0pJyxQaMo0qoRwQoVgKGe/bzs4WMSzvr4itIHgE5knf4fAArw==", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[31mDELETE FROM `bookmarks` WHERE `bookmarks`.`id` = 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks
+Completed 302 Found in 18ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 07:02:25 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.3ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 52ms (Views: 46.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 07:02:28 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (6.4ms)
+  Rendered bookmarks/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 80ms (Views: 72.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 07:02:30 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (11.3ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 91ms (Views: 72.5ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 07:02:34 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (7.7ms)
+  Rendered bookmarks/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 110ms (Views: 102.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/bookmarks" for 127.0.0.1 at 2016-11-02 07:02:46 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SgK/RffXZIeh07zBm61v2foPGaOn9GQWB7mU6niEyyO2lpkPhiLGFZ/Nl1Pqz20R1/XGp6TFRgnRowri84+6XA==", "bookmark"=>{"title"=>"a", "link"=>"b", "note"=>"c"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`) VALUES ('a', 'b', 'c', '2016-11-02 07:02:46', '2016-11-02 07:02:46')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks/2
+Completed 302 Found in 13ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/bookmarks/2" for 127.0.0.1 at 2016-11-02 07:02:46 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`id` = 2 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 40ms (Views: 32.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 07:02:50 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks`[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 48ms (Views: 38.8ms | ActiveRecord: 1.1ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUserIdToBookmarks (20161102075918)
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE `bookmarks` ADD `user_id` int[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUserIdToBookmarks (20161102075918)
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE `bookmarks` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUserIdToBookmarks (20161102075918)
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE `bookmarks` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUserIdToBookmarks (20161102075918)
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE `bookmarks` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7395633852180811650', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateBookmarks (20161102080516)
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE `bookmarks` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `link` varchar(255), `note` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161102080516')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToBookmarks (20161102080601)
+  [1m[35m (21.7ms)[0m  [1m[35mALTER TABLE `bookmarks` ADD `user_id` int[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161102080601')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7395633852180811650')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `bookmarks`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'bookmarks'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'bookmarks'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'sample_development'
+  AND fk.table_name = 'users'
+[0m
+Started GET "/" for 127.0.0.1 at 2016-11-02 08:16:00 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 540ms (Views: 495.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:16:09 +0000
+  
+SyntaxError (/Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:72: syntax error, unexpected ':', expecting ')'
+      params.require(:bookmark).permit(:title, :link, :note :user_id)
+                                                             ^):
+  
+app/controllers/bookmarks_controller.rb:72: syntax error, unexpected ':', expecting ')'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.7ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (145.2ms)
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:16:42 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `bookmarks' for #<User:0x007fd3fa0a80e0>):
+  
+app/controllers/bookmarks_controller.rb:7:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.9ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (137.7ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:20:21 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 5.6ms)
+
+
+  
+NoMethodError (undefined method `bookmarks' for #<User:0x007fd3f9b64fc0>):
+  
+app/controllers/bookmarks_controller.rb:7:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.7ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.5ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (142.1ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:20:43 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 2.1ms)
+
+
+  
+NoMethodError (undefined method `Bookmarks' for #<User:0x007fd3f9939110>):
+  
+app/controllers/bookmarks_controller.rb:7:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.1ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.8ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (143.9ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:21:52 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 2.5ms)
+
+
+  
+NoMethodError (undefined method `bookmarks' for #<User:0x007fd3f9c568c0>):
+  
+app/controllers/bookmarks_controller.rb:8:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (14.3ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (139.2ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:27:33 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 5.8ms)
+
+
+  
+NoMethodError (undefined method `bookmarks' for #<User:0x007fd3f9e463d8>):
+  
+app/controllers/bookmarks_controller.rb:8:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (15.0ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (160.5ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:28:24 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 4.1ms)
+
+
+  
+NoMethodError (undefined method `bookmark' for #<User:0x007fd3fa000db8>):
+  
+app/controllers/bookmarks_controller.rb:8:in `index'
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.8ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (134.6ms)
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:34:06 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 147ms (Views: 65.5ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 08:34:09 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (43.1ms)
+  Rendered bookmarks/new.html.erb within layouts/application (47.2ms)
+Completed 200 OK in 105ms (Views: 83.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/bookmarks" for ::1 at 2016-11-02 08:34:18 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5BHOiQ9eCqEapbHFGlecoSHVVo4JQhlGwAhzHIGO+el0dRXfOx3wM/ZX7XFd9lv1VqCXzweciOkQj7socRzriA==", "bookmark"=>{"title"=>"a", "user_id"=>"1", "link"=>"b", "note"=>"c"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`, `user_id`) VALUES ('a', 'b', 'c', '2016-11-02 08:34:18', '2016-11-02 08:34:18', 1)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks/1
+Completed 302 Found in 24ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/bookmarks/1" for ::1 at 2016-11-02 08:34:18 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1 AND `bookmarks`.`id` = 1 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 53ms (Views: 45.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:34:20 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (1.1ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 75ms (Views: 64.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:34:24 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 58ms (Views: 50.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 08:34:27 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 43ms (Views: 36.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-02 08:34:30 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"04qmdII1qyZoOqRIhH2m7VA2y07L0QZkVzzeDGbxUawYCCgfi8y4yrXGWPixQKzyuRZeAt0b/JYA/IB00Z1Agg=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 08:34:30 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 08:34:30 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 72ms (Views: 68.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-11-02 08:34:33 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 66ms (Views: 63.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-11-02 08:34:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v84lLk/H5sznALGFRw0gbhQgQ1eRzJUWVBmb4Up3ShJkr9AGY6IHIxena0s3U7mGMohCAWNgEWKl8go0G2YZyA==", "user"=>{"email"=>"foo2@bar.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (6.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'foo2@bar.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('foo2@bar.com', '$2a$11$bu9Qr5eNrO7FxTqVB/qIVeAFZxHw3qBrAlnvXVsadISlruw0VQyBu', '2016-11-02 08:34:55', '2016-11-02 08:34:55')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2016-11-02 08:34:56', `last_sign_in_at` = '2016-11-02 08:34:56', `current_sign_in_ip` = '::1', `last_sign_in_ip` = '::1', `updated_at` = '2016-11-02 08:34:56' WHERE `users`.`id` = 2[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 289ms (ActiveRecord: 13.3ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 08:34:56 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 39ms (Views: 34.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:35:02 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 32.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 08:35:04 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (4.2ms)
+  Rendered bookmarks/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 57ms (Views: 49.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bookmarks" for ::1 at 2016-11-02 08:35:13 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YlCKdMMSz0f/osTPTU4coidt/GORZnhbu3gUA7F8ymAo23UPr9NB4Ou/4CJixOr3iHY9Wd6dAh4ftOb02c9B9Q==", "bookmark"=>{"title"=>"2", "user_id"=>"2", "link"=>"a", "note"=>"a"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`, `user_id`) VALUES ('2', 'a', 'a', '2016-11-02 08:35:13', '2016-11-02 08:35:13', 2)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks/2
+Completed 302 Found in 14ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/bookmarks/2" for ::1 at 2016-11-02 08:35:13 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2 AND `bookmarks`.`id` = 2 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 44ms (Views: 35.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:35:23 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 49ms (Views: 41.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 08:35:48 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (18.0ms)
+  Rendered bookmarks/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 152ms (Views: 120.2ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/bookmarks" for ::1 at 2016-11-02 08:36:02 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlgsqR0xFvTyhAWjkS/glQYzLzQQI/95b7EOyfEj3dNE09PScfCYU+aZIU6+pRbAqSjuDl/YhTzLffw+mZBWRg==", "bookmark"=>{"title"=>"Tokyo", "user_id"=>"2", "link"=>"http://www.a.com", "note"=>"Link to A homepage"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`, `user_id`) VALUES ('Tokyo', 'http://www.a.com', 'Link to A homepage', '2016-11-02 08:36:02', '2016-11-02 08:36:02', 2)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks/3
+Completed 302 Found in 30ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/bookmarks/3" for ::1 at 2016-11-02 08:36:02 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (12.9ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2 AND `bookmarks`.`id` = 3 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 215ms (Views: 188.7ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 08:36:06 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (24.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2[0m
+  Rendered bookmarks/index.html.erb within layouts/application (37.5ms)
+Completed 200 OK in 146ms (Views: 103.2ms | ActiveRecord: 25.2ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:40:55 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (1.3ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 167ms (Views: 118.1ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 08:40:58 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (19.8ms)
+  Rendered bookmarks/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 110ms (Views: 91.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bookmarks/1/edit" for 127.0.0.1 at 2016-11-02 08:41:01 +0000
+Processing by BookmarksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1 AND `bookmarks`.`id` = 1 LIMIT 1[0m
+  Rendering bookmarks/edit.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (7.6ms)
+  Rendered bookmarks/edit.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 86ms (Views: 71.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:51:49 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.9ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 144ms (Views: 97.4ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 08:51:51 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SDxXOrc5h/vthaCjJzU0lJY1Lh65XiPbOD2gMN5d5g7MkQVEN64KMWtWth9nQ1/Ixgs8/uKDLvfKK5H4deQttQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 16ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 08:51:51 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:51:51 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.2ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 73ms (Views: 69.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:52:11 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2ODuZYcrJ7CZ2INMaEsUDKlt9+d7Sfii50HcnDmqBKrBpaH8exE/EBfpO88rmECU+ptSFWLR0SrLJqy4F+8vUw==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.2ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 08:52:11', `last_sign_in_at` = '2016-11-02 06:02:39', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 8, `updated_at` = '2016-11-02 08:52:11' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 258ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 08:52:11 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 72ms (Views: 61.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:52:26 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:52:33 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 133ms (Views: 121.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:52:35 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 46ms (Views: 39.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:52:37 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 47ms (Views: 40.9ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 08:52:41 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zsaFuWLtwQq0Q6RZEaCUg2r2emads0lvUOwR/9XFIoAdHUCgrAEtQzyapg2LbJ04gNj494z9s6cCql1PTGLGew=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 08:52:41 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:52:42 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 56ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:52:50 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:52:50 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 56ms (Views: 53.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:52:59 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5STByOVh71WT75n2GmYiflh9jq2z16KQbhSLH6o3bWBy9LYuyqzi/neIamDpyo+xiz0JkUVoEuSdSm5tq68Ow==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 08:53:00', `last_sign_in_at` = '2016-11-02 08:52:11', `last_sign_in_ip` = '127.0.0.1', `sign_in_count` = 9, `updated_at` = '2016-11-02 08:53:00' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks
+Completed 302 Found in 234ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:53:00 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 45ms (Views: 39.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:53:03 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 37ms (Views: 32.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 08:53:12 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (4.6ms)
+  Rendered bookmarks/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 52ms (Views: 45.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 08:53:15 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.8ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 76ms (Views: 67.5ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 08:53:18 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2TAINP+soYIHCTd4lNx2/qjdD5ncCTxaa8hRTM9J7J66VUQYJ0EklKOP7LDWBKCEvN7XVeb29chFRjOuoxDeAA=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 08:53:18 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 08:53:18 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 55ms (Views: 53.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:11:20 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 26ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 12:11:20 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (3.4ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (40.2ms)
+Completed 200 OK in 523ms (Views: 503.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-02 12:11:34 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 69ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-11-02 12:11:50 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kb1h11b3GNpCnXixPdp1FQJX8NRAM6IN0qQE8dURIPi8vMoi8VUbFvCFOx9hfJZAlhUG8xfdzE/mmnR+tdBZiw==", "user"=>{"email"=>"kazuma@foo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'kazuma@foo.com' LIMIT 1[0m
+  [1m[35mSQL (4.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('kazuma@foo.com', '$2a$11$iIHMaaeKW6WceUo5wgSRLOJ4cFjl1/5uKn2nouEzoQAf327XnI3hm', '2016-11-02 12:11:50', '2016-11-02 12:11:50')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2016-11-02 12:11:50', `last_sign_in_at` = '2016-11-02 12:11:50', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `users`.`id` = 3[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks
+Completed 302 Found in 296ms (ActiveRecord: 13.4ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:11:50 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 3[0m
+  Rendered bookmarks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 60ms (Views: 29.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 12:11:54 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (11.8ms)
+  Rendered bookmarks/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 82ms (Views: 61.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/bookmarks" for 127.0.0.1 at 2016-11-02 12:12:08 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F5bYY19kR2TmhfbB672BeJJwXgrlY1e77eb8NM1gSsraVZTGCP7LEDocP74uBKyaD32dWLwRBBJTKDRPVuNTSA==", "bookmark"=>{"title"=>"kaz", "user_id"=>"3", "link"=>"link", "note"=>"Note"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`, `user_id`) VALUES ('kaz', 'link', 'Note', '2016-11-02 12:12:08', '2016-11-02 12:12:08', 3)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks/4
+Completed 302 Found in 21ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/bookmarks/4" for 127.0.0.1 at 2016-11-02 12:12:08 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 3 AND `bookmarks`.`id` = 4 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 39ms (Views: 31.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:12:11 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 3[0m
+  Rendered bookmarks/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 58ms (Views: 47.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 12:12:14 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (5.6ms)
+  Rendered bookmarks/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 102ms (Views: 92.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:12:17 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 3[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 67ms (Views: 59.5ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-11-02 12:12:22 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VDaZzne7NipiuncxEdSvUmJlc1RQIWBkFNvCiaydgMd49FQ/yYr0xS04XzYJ6MplpBRPd0r97ekkAfcIBhfn/g=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-02 12:12:22 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 12:12:22 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 58ms (Views: 56.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:12:29 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-02 12:12:29 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.7ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 64ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-02 12:12:35 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9lZc1uUyKqFM1/qzTeIRTmSZSMFA8aJAaJUt3QAK381mryHRvT+BMBswsR2OYdbsIVt8GCXMRD1CFrRgMy32tg==", "user"=>{"email"=>"foo@bar.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'foo@bar.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2016-11-02 12:12:36', `last_sign_in_at` = '2016-11-02 08:53:00', `sign_in_count` = 10, `updated_at` = '2016-11-02 12:12:36' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/bookmarks
+Completed 302 Found in 236ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:12:36 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 61ms (Views: 55.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 12:17:47 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (36.9ms)
+  Rendered bookmarks/new.html.erb within layouts/application (45.3ms)
+Completed 200 OK in 183ms (Views: 143.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/bookmarks" for 127.0.0.1 at 2016-11-02 12:18:47 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 1[0m
+  Rendered bookmarks/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 168ms (Views: 151.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bookmarks/new" for 127.0.0.1 at 2016-11-02 12:20:19 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (11.2ms)
+  Rendered bookmarks/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 117ms (Views: 106.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 18:17:53 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (30.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:BookmarksController> at /Users/kondoh/ruby_test/sample/app/controllers/bookmarks_controller.rb:3)
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 2[0m
+  Rendered bookmarks/index.html.erb within layouts/application (36.7ms)
+Completed 200 OK in 728ms (Views: 547.9ms | ActiveRecord: 110.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-02 18:18:08 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"b/Twil53ZaCIYle89ee4znPSjJ+fBI3CQ/ErdcqlcfjiPsbscgriOounhlH5aPUJQDybcvIpwHR9efQ0rN4cIA=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 18:18:08 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 18:18:08 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 83ms (Views: 79.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 18:18:13 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 18:18:13 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 50ms (Views: 48.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-11-02 18:20:20 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 83ms (Views: 80.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-11-02 18:20:41 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5ejYPm7Xl+ybFDCsevaJjH6XHOIo2Lsilwt8L1xyiibyAHrspeNC6ul+ZWZKDLGPJmry2q6dec8t4zgC8D6wyg==", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 85ms (Views: 56.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 18:20:51 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 63ms (Views: 60.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-11-02 18:20:54 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/registrations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 60ms (Views: 57.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-11-02 18:21:43 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0SVhWBNvElWZUzh16hKcgTWnzFAIEZNKfCIRrE4eZEzGzcOK2FvHU+s5bb/a6KSCbVoiaI5UUafGylWB4lJeoA==", "user"=>{"email"=>"sam@foo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (9.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sam@foo.com' LIMIT 1[0m
+  [1m[35mSQL (19.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('sam@foo.com', '$2a$11$A6xaaS43nW89pfChdXiCpOR94tdR6UIYCb4iHE65Lr4jYXmLyuVvq', '2016-11-02 18:21:43', '2016-11-02 18:21:43')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2016-11-02 18:21:43', `last_sign_in_at` = '2016-11-02 18:21:43', `current_sign_in_ip` = '::1', `last_sign_in_ip` = '::1' WHERE `users`.`id` = 4[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks
+Completed 302 Found in 367ms (ActiveRecord: 39.3ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 18:21:43 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.9ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 4[0m
+  Rendered bookmarks/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 59ms (Views: 52.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2016-11-02 18:21:47 +0000
+Processing by BookmarksController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (14.8ms)
+  Rendered bookmarks/new.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 97ms (Views: 87.5ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/bookmarks" for ::1 at 2016-11-02 18:22:08 +0000
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z3PoVxUctS0cEVsqBNtghFd1+peQzGA7qtxDuwba8zpfK2OXj0u1Q226K0PaEjIqvIMcAvZh7GXi/Zny6q53QQ==", "bookmark"=>{"title"=>"Title_sam", "user_id"=>"4", "link"=>"Link_sam", "note"=>"Note_sam"}, "commit"=>"Create Bookmark"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO `bookmarks` (`title`, `link`, `note`, `created_at`, `updated_at`, `user_id`) VALUES ('Title_sam', 'Link_sam', 'Note_sam', '2016-11-02 18:22:08', '2016-11-02 18:22:08', 4)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bookmarks/5
+Completed 302 Found in 20ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/bookmarks/5" for ::1 at 2016-11-02 18:22:08 +0000
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT  `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 4 AND `bookmarks`.`id` = 5 LIMIT 1[0m
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 56ms (Views: 48.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 18:22:19 +0000
+Processing by BookmarksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (1.1ms)[0m  [1m[34mSELECT `bookmarks`.* FROM `bookmarks` WHERE `bookmarks`.`user_id` = 4[0m
+  Rendered bookmarks/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 107ms (Views: 94.1ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-02 18:22:35 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4Zd+hdOCMZD0kisBqV6dYUTy2DMGflh5WhvIel3HRSHKD5VjttOX24+DoEZ3QaWB9fUY348ZKrlK60GW2yRP2w=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-11-02 18:22:35 +0000
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 18:22:35 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.9ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 65ms (Views: 62.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for ::1 at 2016-11-02 18:22:39 +0000
+Processing by BookmarksController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-02 18:22:39 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.2.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 60ms (Views: 59.1ms | ActiveRecord: 0.0ms)
+
+
