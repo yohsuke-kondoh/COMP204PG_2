@@ -28,7 +28,7 @@ development:
 test:
   <<: *default
   database: sample_test
-  host: 54.154.211.214
+  host: 52.210.108.108
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -53,4 +53,4 @@ production:
   database: sample_production
   #username: sample 
   #ßpassword: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>
-  host: 54.154.211.214
+  host: 52.210.108.108
