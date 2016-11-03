@@ -6,6 +6,7 @@ files:
 permissions:
    - object: /var/www/
      pattern: "**"
+     owner: ec2-user
      mode: 775
 hooks:
   ApplicationStop:
