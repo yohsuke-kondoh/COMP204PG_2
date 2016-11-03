@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo rm -rf /var/www/rails/sample
+sudo rm -rf /var/www/rails/sample/

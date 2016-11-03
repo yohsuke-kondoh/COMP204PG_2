@@ -6,14 +6,10 @@ files:
 permissions:
    - object: /var/www/
      pattern: "**"
-     mode: 775    
+     mode: 775
 hooks:
   ApplicationStop:
-    -location: scripts/ApplicationStop.sh
-      timeout: 300
-      runas: root
-  BeforeInstall:
-    -location: scripts/BeforeInstall.sh
+    - location: scripts/ApplicationStop.sh
       timeout: 300
       runas: root
   AfterInstall:
@@ -24,3 +20,7 @@ hooks:
     - location: scripts/ApplicationStart.sh
       timeout: 300
       runas: root
+  BeforeInstall:
+      - location: scripts/BeforeInstall.sh
+        timeout: 300
+        runas: root
