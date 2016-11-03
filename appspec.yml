@@ -8,6 +8,10 @@ permissions:
      pattern: "**"
      mode: 775
 hooks:
+  ApplicationStop:
+    - location: scripts/ApplicationStop.sh
+      timeout: 300
+      runas: root
   BeforeInstall:
       - location: scripts/BeforeInstall.sh
         timeout: 300
@@ -18,9 +22,5 @@ hooks:
       runas: root
   ApplicationStart:
     - location: scripts/ApplicationStart.sh
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/ApplicationStop.sh
       timeout: 300
       runas: root
