@@ -3,6 +3,10 @@ os: linux
 files:
   - source: /
     destination: /var/www/rails/sample
+permissions:
+   - object: /var/www/
+     pattern: "**"
+     mode: 775    
 hooks:
   ApplicationStop:
     -location: scripts/ApplicationStop.sh
