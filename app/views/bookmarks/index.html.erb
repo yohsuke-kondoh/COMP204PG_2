@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bookmarks</h1>
+<h1>References</h1>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
 
   <tbody>
     <% @bookmarks.each do |bookmark| %>
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= bookmark.title %></td>
         <td><%= bookmark.link %></td>
         <td><%= bookmark.note %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Bookmark', new_bookmark_path %>
+<%= link_to 'New Reference', new_bookmark_path %>
