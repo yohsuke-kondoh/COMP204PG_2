@@ -51,6 +51,6 @@ test:
 production:
   <<: *default
   database: sample_production
-  #username: sample 
+  #username: sample
   #ßpassword: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>
   host: 52.210.108.108

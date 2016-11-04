@@ -1,26 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <h1>References</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Link</th>
-      <th>Note</th>
-      <th colspan="3"></th>
+      <th class = "spaceUnder">Title</th>
+      <th class = "spaceUnder">Link</th>
+      <th class = "spaceUnder">Note</th>
+      <th class = "spaceUnder", colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td><%= bookmark.title %></td>
-        <td><%= bookmark.link %></td>
-        <td><%= bookmark.note %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class = "spaceUnder"><%= bookmark.title %></td>
+        <td class = "spaceUnder"><%= bookmark.link %></td>
+        <td class = "spaceUnder"><%= bookmark.note %></td>
+        <td class = "spaceUnder"><%= link_to 'Show', bookmark %></td>
+        <td class = "spaceUnder"><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
+        <td class = "spaceUnder"><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,5 +26,8 @@
 
 <br>
 
-<%= link_to 'New Reference', new_bookmark_path %> |
-<%= link_to 'back', root_path %>
+<div class = 'button'>
+  <%= link_to 'New Reference', new_bookmark_path %>
+</div>
+
+<br/>Logged in as <strong><%= current_user.email %></strong>.

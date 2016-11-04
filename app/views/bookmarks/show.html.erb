@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h1>Show Reference</h1>
 
-<p>
+<div class = "refInfoA">
   <strong>Title:</strong>
   <%= @bookmark.title %>
-</p>
+</div>
 
-<p>
+<div class = "refInfoB">
   <strong>Link:</strong>
   <%= @bookmark.link %>
-</p>
+</div>
 
-<p>
+<div class = "refInfoC">
   <strong>Note:</strong>
   <%= @bookmark.note %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
+<div class = 'button'>
 <%= link_to 'Back', bookmarks_path %>
+</div>
+<div class = 'button'>
+<%= link_to 'Edit', edit_bookmark_path(@bookmark) %>
+</div>

@@ -2,28 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table{
-	border-collapse: collapse;
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-table tr td{
-	padding: 10px;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-thead {
-	text-align: left;
-	background: #00308F;
-	color: #FFF;
-}
-
-thead th {
-	padding: 10px;
+.spaceUnder {
+  padding: 1em;
 }
 
 .list_line_even {
-	background: #FAEBD7;
+	background: #ffffff;
 }
 
 .list_line_odd {
-	background: #FEFEFA;
+	background: #D6F0F5;
+}
+
+.button {
+	background-color: white;
+	border: 1px solid #ddd;
+	color: black;
+	padding: 8px 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1em;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.refInfoA{
+	border: 1px solid #ddd;
+	padding-bottom: 2em;
+	width: 32em;
+}
+
+.refInfoB{
+	border: 1px solid #ddd;
+	padding-bottom: 2em;
+	width: 32em;
+	background: #D6F0F5;
+}
+
+.refInfoC{
+	border: 1px solid #ddd;
+	padding-bottom: 2em;
+	width: 32em;
+	margin-bottom: 2em;
 }

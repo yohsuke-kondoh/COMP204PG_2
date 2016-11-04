@@ -1,3 +1,18 @@
+<style>
+  #formdesu {
+    background-color: white;
+  	border: 1px solid #ddd;
+  	color: black;
+  	padding: 8px 8px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 1em;
+  	margin: 4px 2px;
+  	cursor: pointer;
+  }
+</style>
+
 <%= form_for(bookmark) do |f| %>
   <% if bookmark.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +42,9 @@
     <%= f.text_area :note %>
   </div>
 
-  <div class="actions">
+  <div id="formdesu", class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>
